@@ -6,6 +6,6 @@ router.post('/majalah', majalahController.createMajalah);
 router.get('/majalah', majalahController.getAllMajalah);
 router.get('/majalah/:id', majalahController.getMajalahById);
 // router.delete('/majalah', majalahController.createMajalah)
-// router.put('/majalah', majalahController.createMajalah)
+router.put('/majalah/:id', majalahController.updateMajalah)
 
 module.exports = router;

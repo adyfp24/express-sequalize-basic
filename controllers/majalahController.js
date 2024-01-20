@@ -58,12 +58,42 @@ const getMajalahById = async (req, res) => {
         res.status(error).json({
             succes: false,
             message: 'data majalah tidak tersedia'
-        })
+        });
+    }
+}
+
+const updateMajalah = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const dataUpdate = {
+            judul_majalah,
+            isi_konten,
+            gambar
+        } = req.body;
+        const updatedMajalah = await Majalah.update(dataUpdate,{where: {id}});
+        if(updatedMajalah){
+            res.status(200).json({
+                succes: false,
+                message: 'data majalah berhasil ter update',
+                data: dataUpdate
+            });
+        }else{
+            res.status(404).json({
+                succes: false,
+                message: 'id majalah tidak ada',
+            });
+        }
+    } catch (error) {
+        res.status(error).json({
+            succes: false,
+            message: 'data majalah tidak ter update'
+        });
     }
 }
 
 module.exports = {
     createMajalah,
     getAllMajalah,
-    getMajalahById
+    getMajalahById,
+    updateMajalah
 };
