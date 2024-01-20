@@ -1,28 +1,22 @@
-const User = require('../../models/user');
+const User = require('../../models').User;
 
 const logoutUser = async (req, res) => {
     try {
-        const { username, password } = req.body;
-        const user = await User.findone({
-            where:{
-                username,
-                password
-            }
-        });
-        if(user){
+        const dataUser = { username, password } = req.body;
+        const user = await User.destroy({ where: dataUser });
+        if (user) {
             res.status(200).json({
                 success: true,
-                message: 'login sukses',
-                data: user
+                message: 'akun berhasil logout dan dihapus',
             })
-        }else{
+        } else {
             res.status(400).json({
                 success: false,
-                message: 'login gagal',
+                message: 'logout gagal',
             })
         }
     } catch (error) {
-        res.status(500).json({ error: 'Internal Server Errorrr' });
+        res.status(500).json({ error: 'Internal S' });
     }
 }
 
