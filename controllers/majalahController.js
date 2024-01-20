@@ -91,9 +91,33 @@ const updateMajalah = async (req, res) => {
     }
 }
 
+const deleteMajalah = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const deletedMajalah = await Majalah.destroy({where: {id}});
+        if(deletedMajalah){
+            res.status(200).json({
+                succes: false,
+                message: 'data majalah berhasil dihapus',
+            });
+        }else{
+            res.status(404).json({
+                succes: false,
+                message: 'id majalah tidak ditemukan',
+            });
+        }
+    } catch (error) {
+        res.status(200).json({
+            succes: false,
+            message: 'data majalah gagal dihapus',
+        });
+    }
+}
+
 module.exports = {
     createMajalah,
     getAllMajalah,
     getMajalahById,
-    updateMajalah
+    updateMajalah,
+    deleteMajalah
 };
