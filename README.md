@@ -1,0 +1,1 @@
+ini merupakan repository untuk belajar membuat REST API express dengan ORM Sequelize. disini saya membuat sebuah basic CRUD api dimana kita dapat membuat, menampilkan, mengupdate, dan menghapus data majalah. Sequelize ORM sangat membantu dan menurut saya dpaat mempercepat proses development
